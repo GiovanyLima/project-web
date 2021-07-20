@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+
+  db:
+    image: mysql:8.0.19
+    restart: always
+    environment:
+      - MYSQL_DATABASE=desafio-web
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    links:
+      - db
+    ports:
+      - 80:80
+    environment:
+      - PMA_ARBITRARY=1
+
+  app-back:
+    build: /backend
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes: 
+      - /backend:/app
+    environment: 
+      FLASK_ENV: development
+    depends_on: 
+      - db
+
+  app-front:
+    build: /frontend
+    ports:
+      - "3000:3000"
+    volumes: 
+      - /frontend:/app
+    restart: always
+    depends_on:
+      - app-back

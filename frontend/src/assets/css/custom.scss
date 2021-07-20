@@ -1,0 +1,66 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+body {
+  background: linear-gradient(45deg, #8e2de2, #4a00e0) no-repeat fixed;
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.display-4 {
+  font-size: 1.6rem;
+}
+
+// Small devices (landscape phones, 576px and up) (sm)
+@media (min-width: 576px) {
+  .display-4 {
+    font-size: 1.8rem;
+  }
+  .container {
+    padding: 2rem;
+  }
+}
+
+// Medium devices (tablets, 768px and up) (md)
+@media (min-width: 768px) {
+  .display-4 {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 2rem;
+  }
+}
+
+// Large devices (desktops, 992px and up) (lg)
+@media (min-width: 992px) {
+  .display-4 {
+    font-size: 2.4rem;
+  }
+  .container {
+    padding: 2.4rem;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up) (xl)
+@media (min-width: 1200px) {
+  .display-4 {
+    font-size: 2.6rem;
+  }
+  .container {
+    padding: 2.8rem;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up) (xxl)
+@media (min-width: 1400px) {
+  .label {
+    font-size: 2.8rem;
+  }
+  .container {
+    padding: 3rem;
+  }
+}
