@@ -1,6 +1,5 @@
 version: "3.7"
 services:
-
   db:
     image: mysql:8.0.19
     restart: always
@@ -9,7 +8,8 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - "3306:3306"
-
+    networks:
+      - backend
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     links:
@@ -18,7 +18,8 @@ services:
       - 80:80
     environment:
       - PMA_ARBITRARY=1
-
+    networks:
+      - backend
   app-back:
     build: /backend
     restart: always
@@ -30,7 +31,9 @@ services:
       FLASK_ENV: development
     depends_on: 
       - db
-
+    networks:
+      - backend
+      - frontend
   app-front:
     build: /frontend
     ports:
@@ -40,3 +43,5 @@ services:
     restart: always
     depends_on:
       - app-back
+    networks:
+      - frontend
